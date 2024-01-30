@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI Chatbot</title>
+</head>
+<body>
+    <main>
+        <div class="msg-container">
+            <div class="user-msg">
+                User:Hello
+            </div>
+            <div class="bot-msg">
+                Bot:Hello, how can I help you?
+            </div>
+            <div class="user-input-div">
+                <input type="text" placeholder="Chat With Your Bot" class="user-input"/>
+                <button class="btn">Go</button>
+            </div>
+        </div>
+    </main>
+</body>
+<!-- <script type="importmap">
+    {      "imports": {        "@google/generative-ai": "https://esm.run/@google/generative-ai"      }    }
+  </script>
+  <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";const API_KEY = "AIzaSyBiACo5a80XBMMW91hgqKkJg7vFfcTEwZA";
+    const genAI = new GoogleGenerativeAI(API_KEY);document.querySelector('.btn').addEventListener('click', run);
+
+    async function run() { 
+         alert("fun run");  // For text-only input, use the gemini-pro model  const model = genAI.getGenerativeModel({ model: "gemini-pro"});    /*GETTING AND SHOWING USER INPUT START*/   let userInput = document.querySelector('.user-input').value;        let userMessageDiv = document.createElement("div");    userMessageDiv.className = "user-msg";    userMessageDiv.textContent = `User: ${userInput}`;    document.querySelector('.msg-container').appendChild(userMessageDiv);        /*GETTING AND SHOWING USER INPUT END */    const prompt = userInput;
+      const result = await model.generateContent(prompt);  
+      const response = await result.response;  
+      const text = response.text();    /* Show response on screen */  
+      let botMessageDiv = document.createElement("div");   
+       botMessageDiv.className = "bot-msg";   
+        botMessageDiv.textContent = `bot: ${text}`;    
+        document.querySelector('.msg-container').appendChild(botMessageDiv);
+    }
+  </script> -->
+    <script type="importmap">
+        {
+        "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+        } </script>
+        
+        <script type="module">
+        
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+        
+        const API_KEY = "AIzaSyBiACo5a80XBMMW91hgqKkJg7vFfcTEwZA";
+        
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        
+        async function run() {
+        
+        const model = genAI.getGenerativeModel({ model: "gemini-pro"});
+        
+        const prompt = "Write a story about a magic backpack."
+        
+        const result = await model.generateContent(prompt);
+        
+        const response = await result.response;
+        
+        const text = response.text();
+        
+        console.log(text);
+        
+        alert(text);
+        
+        }
+        
+        run();
+        
+        document.querySelector('.btn').addEventListener('click', run);
+        let userInput = document.querySelector('.user-input').value;
+        let userMessageDiv = document.createElement("div");
+        userMessageDiv.className = "user-msg";
+        userMessageDiv.textContent = User: ${userInput};
+        document.querySelector('.msg-container').appendChild(userMessageDiv);
+        const prompt = userInput;
+        let botMessageDiv = document.createElement("div");
+        botMessageDiv.className = "bot-msg";
+        botMessageDiv.textContent = bot: ${text};
+        document.querySelector('.msg-container').appendChild(botMessageDiv);
+    </script>
+</html>
